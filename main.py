@@ -2,7 +2,10 @@ import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-BOT_TOKEN = os.environ.get("8572237486:AAGxPeOKQo5Rg6kVieJNqYyrXV_ODYmSGe8")
+BOT_TOKEN = os.getenv("BOT_TOKEN")  # SADECE BU
+
+if not BOT_TOKEN:
+    raise RuntimeError("BOT_TOKEN environment variable bulunamadı")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
@@ -24,6 +27,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
 
-app = ApplicationBuilder().token(BOT_TOKEN).build()
-app.add_handler(CommandHandler("start", start))
-app.run_polling()
+def main():
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
