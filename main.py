@@ -2,7 +2,7 @@ import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
+BOT_TOKEN = os.environ.get("8572237486:AAGxPeOKQo5Rg6kVieJNqYyrXV_ODYmSGe8")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
